@@ -2,7 +2,7 @@
 
 
 session_start();
-header('Content-Type: text/html; charset=utf-8')
+header('Content-Type: text/html; charset=utf-8');
 
 
 // редирект
@@ -27,25 +27,25 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $query = "SELECT * FROM authors WHERE login = '$login'";
     $result = mysqli_query($link, $query);
     
-}
-    
     
     if ($user = mysqli_fetch_assoc($result)) {
-		
+
     //сверяем введенный пароль с хешем
-		if (password_verify($password, $user['password'])) {
-			$_SESSION['user_id'] = $user['id'];
-			$_SESSION['username'] = $user['username'];
-			$_SESSION['rights'] = $user['rights'];
-			
-			header("Location: default.php");
-			exit();
-			} else {
-				$error = "Неверный логин или пароль";
-			}
+	if (password_verify($password, $user['password'])) {
+		$_SESSION['user_id'] = $user['id'];
+		$_SESSION['username'] = $user['username'];
+		$_SESSION['rights'] = $user['rights'];
+		
+		header("Location: default.php");
+		exit();
 		} else {
-			$error = "Пользователь не найден!";
+			$error = "Неверный логин или пароль";
 		}
+	} else {
+		$error = "Пользователь не найден!";
+	}
+
+}
 ?>
 
 <!DOCTYPE html>
