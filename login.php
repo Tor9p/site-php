@@ -1,4 +1,5 @@
 <?php
+header('Content-Type: text/html; charset=utf-8');
 
 // блокируем вход на страницу
 http_response_code(403);
