@@ -44,7 +44,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 			// блять я идиот, я шифрование забыл переписать 
 
 			// ibahjdfybt 
-			$hashed_password = password_hash($password, PASSWORD_DEFAULT)
+			$hashed_password = password_hash($password, PASSWORD_DEFAULT);
 
 
             $insert_query = "INSERT INTO authors (login, password, username, rights) 
