@@ -67,3 +67,38 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && !$blocked) {
     }
 }
 ?>
+
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <title>Вход</title>
+</head>
+<body>
+
+    <h2>Вход в систему</h2>
+
+    <?php if (!empty($error)): ?>
+        <p style="color: red;"><?= $error ?></p>
+    <?php endif; ?>
+
+    <form action="login.php" method="POST">
+        <div>
+            <label>Логин:</label><br>
+            <input type="text" name="login" required>
+        </div>
+        <br>
+        <div>
+            <label>Пароль:</label><br>
+            <input type="password" name="password" required>
+        </div>
+        <br>
+        <button type="submit">Войти</button>
+    </form>
+
+    <br>
+    <p>Нет аккаунта? не мои проблемы</p>
+    <a href="default.php">← На главную</a>
+
+</body>
+</html>
