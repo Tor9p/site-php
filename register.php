@@ -1,5 +1,10 @@
 <?php
 
+// блокируем вход на страницу
+http_response_code(403);
+exit;
+
+
 session_start();
 header('Content-Type: text/html; charset=utf-8');
 
