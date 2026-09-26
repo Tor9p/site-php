@@ -23,7 +23,7 @@ jobs:
           server: ${{ secrets.FTP_SERVER }}
           username: ${{ secrets.FTP_USERNAME }}
           password: ${{ secrets.FTP_PASSWORD }}
-          server-dir: d901193x.beget.tech/public_html/task/MyTravelNotes/site/
+          server-dir: task/MyTravelNotes/site/
           # Исключаем служебные файлы и файлы с конфигами:
           exclude: |
             **/.git*
