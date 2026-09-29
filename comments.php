@@ -1,0 +1,78 @@
+<?php
+
+header('Content-Type: text/html; charset=utf-8');
+session_start();
+require_once("MySiteDB.php");
+
+$note_id = isset($_GET['note']) ? (int)$_GET['note'] : 0;
+
+if ($note_id <= 0) {
+    die("Некорректный ID заметки. <a href='default.php'>На главную</a>");
+}
+
+$query_note = "SELECT * FROM notes WHERE id = $note_id";
+$res_note = mysqli_query($link, $query_note);
+$note = mysqli_fetch_assoc($res_note);
+
+if (!$note) {
+    die("Заметка не найдена. <a href='default.php'>На главную</a>");
+}
+
+$query_comments = "SELECT c.*, a.login 
+                   FROM comments c 
+                   LEFT JOIN authors a ON c.author_id = a.id 
+                   WHERE c.art_id = $note_id 
+                   ORDER BY c.id ASC";
+$res_comments = mysqli_query($link, $query_comments);
+?>
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="utf-8">
+    <title><?php echo htmlspecialchars($note['title']); ?></title>
+    <style>
+        body { font-family: sans-serif; margin: 20px; line-height: 1.6; }
+        .comm { border-left: 3px solid #0066cc; background: #f4f4f4; padding: 10px; margin-bottom: 10px; }
+        .meta { color: #666; font-size: 0.85em; }
+    </style>
+</head>
+<body>
+
+<p><a href="default.php">&larr; На главную</a></p>
+
+<h2><?php echo htmlspecialchars($note['title']); ?></h2>
+<p class="meta">Дата публикации: <?php echo htmlspecialchars($note['created']); ?></p>
+<p><?php echo nl2br(htmlspecialchars($note['article'])); ?></p>
+
+<p>
+    <a href="editnote.php?note=<?php echo $note['id']; ?>">Изменить заметку</a> | 
+    <a href="deletenote.php?note=<?php echo $note['id']; ?>" onclick="return confirm('Удалить?');">Удалить заметку</a>
+</p>
+
+<hr>
+<h3>Комментарии:</h3>
+
+<?php
+if (mysqli_num_rows($res_comments) > 0) {
+    while ($comm = mysqli_fetch_assoc($res_comments)) {
+        $author = !empty($comm['login']) ? $comm['login'] : 'Пользователь';
+        echo "<div class='comm'>";
+        echo "<b>" . htmlspecialchars($author) . "</b> <span class='meta'>(" . htmlspecialchars($comm['created']) . ")</span><br>";
+        echo nl2br(htmlspecialchars($comm['comment']));
+        echo "</div>";
+    }
+} else {
+    echo "<p><i>Эту запись еще никто не комментировал.</i></p>";
+}
+?>
+
+<hr>
+<!-- <h4>Добавить комментарий:</h4>
+<form action="newcomment.php" method="post">
+    <input type="hidden" name="art_id" value="<?php echo $note['id']; ?>">
+    <p><textarea name="comment" rows="4" cols="50" placeholder="Напишите комментарий..." required></textarea></p>
+    <p><input type="submit" value="Отправить комментарий"></p>
+</form> -->
+
+</body>
+</html>
