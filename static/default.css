@@ -1,3 +1,8 @@
+.body {
+	background: #121212; 
+	color: #e0e0e0
+}
+
 .top-nav {
     display: flex;
     justify-content: space-between; /* Разносит .nav-left влево, а .nav-right вправо */
