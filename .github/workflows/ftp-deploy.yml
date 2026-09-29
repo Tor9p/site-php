@@ -1,4 +1,4 @@
-name: Deploy Website via FTP
+name: Deploy Website via FTPS
 
 on:
   push:
