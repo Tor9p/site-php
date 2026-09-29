@@ -5,6 +5,7 @@ node_modules/
 __pycache__/
 venv/
 .idea/
+.ftp-deploy-sync-state.json
 comments.php
 MySiteDB.php
 new_file.txt
