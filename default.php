@@ -88,6 +88,8 @@ $query = "SELECT * FROM notes ORDER BY created DESC, id DESC";
 $select_note = mysqli_query($link, $query);
 
 $total_notes = mysqli_num_rows($select_note);
+// логика для вывода не более5 последних заметок
+// чтобы не нагружать БД на этом блядском бегете
 if ($total_notes > 0) {
 	$counter = 0;
 	while ($note = mysqli_fetch_array($select_note)) {
