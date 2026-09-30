@@ -87,8 +87,18 @@ require_once("MySiteDB.php");
 $query = "SELECT * FROM notes ORDER BY created DESC, id DESC";
 $select_note = mysqli_query($link, $query);
 
-if (mysqli_num_rows($select_note) > 0) {
-    while ($note = mysqli_fetch_array($select_note)) {
+$total_notes = mysqli_num_rows($select_note);
+if ($total_notes > 0) {
+	$counter = 0;
+	while ($note = mysqli_fetch_array($select_note)) {
+	// logic 5 notes on page syka
+	if ($total_notes > 5 && $counter >= 5) {
+		break;
+	}
+	$counter++;
+	
+	// if (mysqli_num_rows($select_note) > 0) {
+    
         echo "<div class='note'>";
         // Заголовок является ссылкой на страницу комментариев (п. 3.2 методички)
         echo "<h3><a href='comments.php?note=" . $note['id'] . "'>" . htmlspecialchars($note['title']) . "</a></h3>";
