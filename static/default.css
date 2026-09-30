@@ -1,6 +1,23 @@
 body {
-	background: #121212; 
-	color: #e0e0e0;
+    background: #121212; 
+    color: #e0e0e0;
+    font-family: sans-serif; /* Для более аккуратного вида */
+}
+
+/* Ссылки внутри заметок и обычные ссылки на странице */
+a {
+    color: #4da3ff;
+    text-decoration: none;
+}
+
+a:hover {
+    text-decoration: underline;
+}
+
+/* Текст приветствия в навигации */
+.nav-right span {
+    color: #e0e0e0;
+    margin-right: 15px;
 }
 
 .top-nav {
@@ -9,7 +26,6 @@ body {
     align-items: center;            /* Выравнивает их по вертикали по центру */
     width: 100%;
     padding: 10px 0;
-    /* border-bottom: 1px solid #333; */
     margin-bottom: 7px;
 }
 
@@ -19,37 +35,21 @@ body {
     padding: 0;           
     margin: 0;            
     align-items: center;
-    
-    /* 1. ОТСТУП СЛЕВА ДЛЯ ВСЕГО БЛОКА НАВИГАЦИИ */
     margin-left: 10px;    
 }
 
-/* 2. ПРИМЕНЯЕМ ОТСТУПЫ И ЧЕРТУ НАПРЯМУЮ К ССЫЛКАМ (a) */
+/* Вертикальная черта между ссылками в левом меню */
 .nav-left a:not(:last-child) {
-    /* Рисуем вертикальную черту справа от каждой ссылки, кроме ПОСЛЕДНЕЙ */
     border-right: 1px solid #3a7bc8; 
-    
-    /* Отступы вокруг черты */
-    padding-right: 14px; /* Расстояние от текста ссылки до черты */
-    margin-right: 14px;  /* Расстояние от черты до следующей ссылки */
+    padding-right: 14px; 
+    margin-right: 14px;  
 }
 
-/* 3. ОСТАЛЬНЫЕ СТИЛИ ВАШИХ ССЫЛОК */
 .nav-left a {
     color: #4da3ff;
     text-decoration: none;
     font-weight: bold;
 }
-
-.nav-left a:hover {
-    text-decoration: underline;
-}
-
-/* .nav-right {
-    color: #4da3ff;
-    text-decoration: none;
-    font-weight: bold;
-} */
 
 .nav-right a {
     color: #ff6b7a;
@@ -73,11 +73,8 @@ body {
     border-radius: 4px;
     padding: 12px 16px;
     margin-bottom: 15px;
-    
-    /* ширина */
     width: auto;
     max-width: 1500px;
-    
     color: #e0e0e0;
 }
 
@@ -93,8 +90,15 @@ body {
 
 .meta-date {
     display: block;
-    text-align: right;       /* Прижимает текст даты к правому краю */
-    color: #888888;          /* Делает дату ненавязчивой серой */
+    text-align: right;       
+    color: #888888;          
     font-size: 0.85em;
     margin-top: 10px;
+}
+
+/* Разделительная линия <hr> */
+hr {
+    border: 0;
+    border-top: 1px solid #333333;
+    margin: 15px 0;
 }
