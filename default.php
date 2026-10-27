@@ -22,33 +22,6 @@ require_once("MySiteDB.php");
 </head>
 <body>
 
-<!-- <nav>
-    <a href="login.html">Вход</a>
-    <a href="newnote.php">Новая заметка</a>
-    <a href="email.php">Отправить сообщение</a>
-    <a href="photo.php">Добавить фото</a>
-    <a href="inform.php">Статистика</a>
-    <a href="admin.php">Администратору</a>
-    <a href="logout.php" class="logout">Выход</a>
-</nav> -->
-
-
-<!-- <nav class="top-nav">
-    <div class="nav-left">
-        <a href="login.html">Вход</a>
-        <a href="newnote.php">Новая заметка</a>
-        <a href="email.php">Отправить сообщение</a>
-        <a href="photo.php">Добавить фото</a>
-        <a href="inform.php">Статистика</a>
-        <a href="admin.php">Администратору</a>
-    </div>
-    <div class="nav-right">
-        <a href="logout.php">Выход</a>
-    </div>
-</nav> -->
-
-
-
 <nav class="top-nav">
     <div class="nav-left">
         <?php if ($isAuth): ?>
@@ -58,7 +31,7 @@ require_once("MySiteDB.php");
             <a href="inform.php">Статистика</a>
             
             <?php if ($isAdmin): ?>
-                <!-- Видно только админу (rights = 'a') -->
+                <!-- rights = 'a') -->
                 <a href="admin.php">Администратору</a>
             <?php endif; ?>
         <?php endif; ?>
@@ -66,11 +39,10 @@ require_once("MySiteDB.php");
 
     <div class="nav-right">
         <?php if ($isAuth): ?>
-            <!-- Если авторизован: имя и кнопка выхода -->
             <span>Привет, <?= htmlspecialchars($_SESSION['username']) ?>!</span>
             <a href="logout.php">Выход</a>
         <?php else: ?>
-            <!-- Если гость: кнопка входа -->
+            <!-- гость -->
             <a href="login.php">Вход</a>
         <?php endif; ?>
     </div>
@@ -102,7 +74,7 @@ if ($total_notes > 0) {
 	// if (mysqli_num_rows($select_note) > 0) {
     
         echo "<div class='note'>";
-        // Заголовок является ссылкой на страницу комментариев (п. 3.2 методички)
+        // Заголовок + link in text
         echo "<h3><a href='comments.php?note=" . $note['id'] . "'>" . htmlspecialchars($note['title']) . "</a></h3>";
        
         # echo "<p>" . nl2br(htmlspecialchars($note['article'])) . "</p>";
@@ -123,7 +95,12 @@ if ($total_notes > 0) {
          echo "<small class='meta-date'>Дата публикации: " . htmlspecialchars($note['created']) . "</small>";
         echo "</div>";
     }
-} else {
+
+} 
+	echo '<button type="button">Click Me pls</button>';
+
+
+	else {
     echo "<p>Заметок пока нет.</p>";
 }
 ?>

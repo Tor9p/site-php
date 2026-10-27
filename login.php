@@ -40,7 +40,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && !$blocked) {
     mysqli_set_charset($link, "utf8");
 
     $login = mysqli_real_escape_string($link, trim($_POST['login']));
-    $password = mysqli_real_escape_string($link, trim($_POST['password'])); 
+    $password = mysqli_real_escape_string($link, trim($_POST['password']));
 
     $query = "SELECT * FROM authors WHERE login = '$login'";
     $result = mysqli_query($link, $query);
@@ -51,7 +51,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && !$blocked) {
             $_SESSION['user_id'] = $user['id'];
             $_SESSION['username'] = $user['username'];
             $_SESSION['rights'] = $user['rights'];
-            
+
             header("Location: default.php");
             exit();
 

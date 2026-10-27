@@ -1,5 +1,5 @@
 body {
-    background: #121212; 
+    background: #121212;
     color: #e0e0e0;
     font-family: sans-serif; /* Для более аккуратного вида */
 }
@@ -31,18 +31,18 @@ a:hover {
 
 .nav-left {
     display: flex;
-    list-style: none; 
-    padding: 0;           
-    margin: 0;            
+    list-style: none;
+    padding: 0;
+    margin: 0;
     align-items: center;
-    margin-left: 10px;    
+    margin-left: 10px;
 }
 
 /* Вертикальная черта между ссылками в левом меню */
 .nav-left a:not(:last-child) {
-    border-right: 1px solid #3a7bc8; 
-    padding-right: 14px; 
-    margin-right: 14px;  
+    border-right: 1px solid #3a7bc8;
+    padding-right: 14px;
+    margin-right: 14px;
 }
 
 .nav-left a {
@@ -90,8 +90,8 @@ a:hover {
 
 .meta-date {
     display: block;
-    text-align: right;       
-    color: #888888;          
+    text-align: right;
+    color: #888888;
     font-size: 0.85em;
     margin-top: 10px;
 }
