@@ -111,9 +111,7 @@ else {
 ?>
 
 <!-- AI generated syka blyat -->
-</div> <!-- Конец контейнера заметок -->
-
-<!-- 2. ИСПРАВИЛИ КНОПКУ: тип button, убрали форму, починили синтаксис else -->
+</div> 
 <?php if ($total_notes > 5): ?>
     <button type="button" id="load-more-btn">Смотреть дальше</button>
 <?php endif; ?>
