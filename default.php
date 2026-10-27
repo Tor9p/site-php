@@ -115,7 +115,7 @@ else {
 
 <!-- 2. ИСПРАВИЛИ КНОПКУ: тип button, убрали форму, починили синтаксис else -->
 <?php if ($total_notes > 5): ?>
-    <button type="button" id="load-more-btn">Click Me pls</button>
+    <button type="button" id="load-more-btn">Смотреть дальше</button>
 <?php endif; ?>
 
 <!-- 3. МАГИЯ JAVASCRIPT (Дописывает статьи снизу) -->
@@ -138,7 +138,7 @@ document.getElementById('load-more-btn').addEventListener('click', function() {
                 // Добавляем новые статьи строго в низ контейнера
                 document.getElementById('notes-container').insertAdjacentHTML('beforeend', data);
                 currentOffset += 5; // Увеличиваем смещение для следующего клика
-                btn.innerText = 'Click Me pls';
+                btn.innerText = 'Смотреть дальше';
                 btn.disabled = false;
             }
         })

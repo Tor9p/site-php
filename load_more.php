@@ -2,11 +2,11 @@
 	require_once("MySiteDB.php");
 
 	// смотрим какие смещение (прочитано кол-во статей)
-	$offset = isset($_GET['offcet']) ? (int)$_GET['offset'] : 0;
+	$offset = isset($_GET['offset']) ? (int)$_GET['offset'] : 0;
 
 
 	// + next 5 statey
-	$query = "SELECT * FROM notes  ORDER BY created DESC, id DESC LIMIT 5 OFFSET $offcet";
+	$query = "SELECT * FROM notes  ORDER BY created DESC, id DESC LIMIT 5 OFFSET $offset";
 	$select_note = mysqli_query($link, $query);
 
 	if (mysqli_num_rows($select_note) > 0) {
