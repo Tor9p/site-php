@@ -97,7 +97,9 @@ if ($total_notes > 0) {
     }
 
 } 
-	echo '<button type="button">Click Me pls</button>';
+	# echo '<button type="button">Click Me pls</button>';
+	echo '<button type="submit" name="count_zer_button">Click Me pls</button>';
+
 
 
 	else {
