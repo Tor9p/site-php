@@ -54,6 +54,9 @@ require_once("MySiteDB.php");
 
 <h2>Все заметки:</h2>
 
+<!-- Исправление логики верстки: добавлен контейнер для JS -->
+<div id="notes-container">
+
 <?php
 // Запрос к базе данных: новые заметки сверху (п. 6.1 методички)
 $query = "SELECT * FROM notes ORDER BY created DESC, id DESC";
@@ -101,14 +104,8 @@ if ($total_notes > 0) {
          echo "<small class='meta-date'>Дата публикации: " . htmlspecialchars($note['created']) . "</small>";
         echo "</div>";
     }
-
 } 
-	# echo '<button type="button">Click Me pls</button>';
-	echo '<button type="submit" name="count_zer_button">Click Me pls</button>';
-
-
-
-	else {
+else {
     echo "<p>Заметок пока нет.</p>";
 }
 ?>
