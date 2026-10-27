@@ -82,12 +82,18 @@ if ($total_notes > 0) {
         // Логика обрезки текста до 200 символов:
         $text = $note['article'];
         if (mb_strlen($text, 'UTF-8') > 200) {
-            // Обрезаем до 200 символов и добавляем троеточие
+            // Обрезаем до 200 символов и ...
             $shortText = mb_substr($text, 0, 200, 'UTF-8') . '...';
         } else {
-            // Если текст короче 200 символов — выводим как есть
             $shortText = $text;
         }
+			// мне не нравится такой подход
+			// это лучше:
+		// $text = $note['article'];
+		//$shortText = (mb_strlen($text, 'UTF-8') > 200) ? mb_substr($text, 0, 200, 'UTF-8') . '...' : $text;
+
+
+
         
         // Вывод анонса
         echo "<p>" . nl2br(htmlspecialchars($shortText)) . "</p>";
@@ -106,6 +112,46 @@ if ($total_notes > 0) {
     echo "<p>Заметок пока нет.</p>";
 }
 ?>
+
+<!-- AI generated syka blyat -->
+</div> <!-- Конец контейнера заметок -->
+
+<!-- 2. ИСПРАВИЛИ КНОПКУ: тип button, убрали форму, починили синтаксис else -->
+<?php if ($total_notes > 5): ?>
+    <button type="button" id="load-more-btn">Click Me pls</button>
+<?php endif; ?>
+
+<!-- 3. МАГИЯ JAVASCRIPT (Дописывает статьи снизу) -->
+<script>
+let currentOffset = 5; // Мы уже вывели первые 5 штук через PHP выше
+
+document.getElementById('load-more-btn').addEventListener('click', function() {
+    let btn = this;
+    btn.innerText = 'Загрузка...';
+    btn.disabled = true;
+
+    // Скрыто запрашиваем твой файл load_more.php, передавая ему текущее смещение
+    fetch('load_more.php?offset=' + currentOffset)
+        .then(response => response.text())
+        .then(data => {
+            if (data.trim() === 'done') {
+                btn.innerText = 'Статей больше нет';
+                btn.disabled = true;
+            } else {
+                // Добавляем новые статьи строго в низ контейнера
+                document.getElementById('notes-container').insertAdjacentHTML('beforeend', data);
+                currentOffset += 5; // Увеличиваем смещение для следующего клика
+                btn.innerText = 'Click Me pls';
+                btn.disabled = false;
+            }
+        })
+        .catch(error => {
+            console.error('Ошибка:', error);
+            btn.innerText = 'Ошибка загрузки';
+            btn.disabled = false;
+        });
+});
+</script>
 
 </body>
 </html>
