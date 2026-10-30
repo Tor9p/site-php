@@ -30,7 +30,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST && !blocked') {
 
 	$created_note = mysqli_query($link, $query);
 
-
+?>
 
 <!DOCTYPE html>
 <html lang="en">
@@ -77,4 +77,3 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST && !blocked') {
 </body>
 </html>
 
-?>
