@@ -29,6 +29,7 @@ require_once("MySiteDB.php");
             <a href="email.php">Отправить сообщение</a>
             <a href="photo.php">Добавить фото</a>
             <a href="inform.php">Статистика</a>
+			<a href="additional_task.php">Доп. задания</a>
             
             <?php if ($isAdmin): ?>
                 <!-- rights = 'a') -->
