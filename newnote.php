@@ -3,9 +3,9 @@ session_start();
 
 $is_Auth = isset($_SESSION['user_id']);
 
-if !$is_Auth {
+if (!$is_Auth) {
 	http_response_code(401);
-	echo "Не авторизован!";
+	// echo "Не авторизован!";
 	header('Location: default.php');
 	exit;
 }
@@ -17,19 +17,19 @@ if !$is_Auth {
 
 
 
-if ($_SERVER['REQUEST_METHOD'] === 'POST && !blocked') {
-	require_once(MySiteDB.php);
+if ($_SERVER['REQUEST_METHOD'] === 'POST' ) {
+	require_once('MySiteDB.php');
 	mysqli_set_charset($link, "utf8");
 
-}
 	// trim line !abuse sqli
-	$title_save = mysqli_real_escape_string($link, trim($_POST['titile']));
+	$title_save = mysqli_real_escape_string($link, trim($_POST['title']));
 	$article_save = mysqli_real_escape_string($link, trim($_POST['article']));
 
 	$query = "INSERT INTO notes (title, article) VALUES ('$title_save', '$article_save')";
 
 	$created_note = mysqli_query($link, $query);
 
+}
 ?>
 
 <!DOCTYPE html>
@@ -42,22 +42,22 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST && !blocked') {
 <body>
 	 <h1>Добавление новой заметки</h1>
 
-	//  form
+	<!-- form -->
     <form action="newnote.php" method="POST">
         
-	// title
+	<!-- title -->
         <div>
             <label for="title">Заголовок заметки:</label>
             <br>
             <input type="text" id="title" name="title" required placeholder="Введите заголовок">
-			// $title_page	= trim($_POST['title']);
-			// $article = trimm($_POST['title']);
+			<!-- // $title_page	= trim($_POST['title']);
+			// $article = trimm($_POST['title']); -->
 
         </div>
 
         <br>
 
-		// article )=(text)
+		 <!-- article )=(text) -->
         <div>
             <label for="article">Текст заметки:</label>
             <br>
