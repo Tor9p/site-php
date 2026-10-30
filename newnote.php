@@ -13,6 +13,7 @@ if !$is_Auth {
 
 // добавить логику проверку авторизации пользователя
 // если не авторизован редирект --> логин.php 
+// completes
 
 
 
@@ -21,12 +22,13 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST && !blocked') {
 	mysqli_set_charset($link, "utf8");
 
 }
-
-
+	// trim line !abuse sqli
 	$title_save = mysqli_real_escape_string($link, trim($_POST['titile']));
 	$article_save = mysqli_real_escape_string($link, trim($_POST['article']));
 
-	$query = "INSERT INTO notes (title, article) VALUES ('$title_save', '$article_save')"
+	$query = "INSERT INTO notes (title, article) VALUES ('$title_save', '$article_save')";
+
+	$created_note = mysqli_query($link, $query);
 
 
 
@@ -40,20 +42,22 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST && !blocked') {
 <body>
 	 <h1>Добавление новой заметки</h1>
 
+	//  form
     <form action="newnote.php" method="POST">
         
-        <-- Поле для заголовка заметки -->
+	// title
         <div>
             <label for="title">Заголовок заметки:</label>
             <br>
             <input type="text" id="title" name="title" required placeholder="Введите заголовок">
-			$title_page	= trim($_POST['title']);
-			$article = trimm($_POST['title']);
+			// $title_page	= trim($_POST['title']);
+			// $article = trimm($_POST['title']);
 
         </div>
 
         <br>
 
+		// article )=(text)
         <div>
             <label for="article">Текст заметки:</label>
             <br>
