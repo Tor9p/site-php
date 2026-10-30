@@ -29,6 +29,10 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' ) {
 
 	$created_note = mysqli_query($link, $query);
 
+	// redirect on default page site
+	header('Location: default.php' );
+	exit;
+
 }
 ?>
 
